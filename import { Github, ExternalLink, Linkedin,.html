@@ -1,0 +1,251 @@
+import { Github, ExternalLink, Linkedin, Mail, Phone } from 'lucide-react';
+
+const ExperienceCard = ({ title, role, date, points }) => (
+  <div className="bg-purple-900 bg-opacity-20 p-6 rounded-lg hover:bg-opacity-30 transition-colors">
+    <h3 className="text-purple-400 text-xl font-bold">{title}</h3>
+    <p className="font-semibold">{role}</p>
+    <p className="text-gray-400 italic">{date}</p>
+    <ul className="text-gray-300 space-y-2 mt-4">
+      {points.map((point, index) => (
+        <li key={index}>• {point}</li>
+      ))}
+    </ul>
+  </div>
+);
+
+const ProjectCard = ({ title, date, description, skills, imagePlaceholder }) => (
+  <div className="bg-purple-900 bg-opacity-20 p-8 rounded-lg hover:bg-opacity-30 transition-colors">
+    {imagePlaceholder && (
+      <div className="mb-6 w-full h-48 bg-purple-800 bg-opacity-20 rounded-lg flex items-center justify-center text-purple-400">
+        Image Placeholder
+      </div>
+    )}
+    <div className="mb-4">
+      <h3 className="text-purple-400 text-xl font-semibold">{title}</h3>
+      <p className="text-gray-400">{date}</p>
+    </div>
+    <p className="text-gray-300 mb-6">{description}</p>
+    <ul className="text-gray-300 space-y-1 mb-6">
+      {skills.map((skill, index) => (
+        <li key={index}>• {skill}</li>
+      ))}
+    </ul>
+    <div className="flex gap-4">
+      <ExternalLink className="w-6 h-6 text-gray-400 hover:text-purple-400 cursor-pointer" />
+    </div>
+  </div>
+);
+
+const Portfolio = () => {
+  return (
+    <div className="min-h-screen bg-black text-white p-8">
+      {/* Navigation */}
+      <nav className="flex justify-between items-center mb-20">
+        <div className="text-purple-400 text-2xl">{'{SANIKA KALASKAR}'}</div>
+        <div className="flex gap-8">
+          <a href="#info" className="hover:text-purple-400">Info</a>
+          <a href="#education" className="hover:text-purple-400">Education</a>
+          <a href="#experience" className="hover:text-purple-400">Experience</a>
+          <a href="#projects" className="hover:text-purple-400">Projects</a>
+          <a href="#extra" className="hover:text-purple-400">Extra Curricular</a>
+          <a href="#contact" className="hover:text-purple-400">Contact</a>
+        </div>
+      </nav>
+
+      {/* Info Section */}
+      <section id="info" className="mb-32">
+        <div className="flex justify-between items-center">
+          <div className="max-w-2xl">
+            <h1 className="text-6xl font-bold mb-4">
+              Hi, there!<br />
+              I am<br />
+              <span className="text-purple-400">Sanika Kalaskar</span>
+            </h1>
+            <p className="text-gray-400 text-lg mb-8">
+              UI/UX Designer passionate about creating intuitive and accessible digital experiences
+            </p>
+            <div className="flex gap-6">
+              <a href="mailto:sanikakalaskar2004@gmail.com" className="flex items-center gap-2 text-purple-400">
+                <Mail className="w-5 h-5" />
+                Email
+              </a>
+              <a href="tel:+917249557299" className="flex items-center gap-2 text-purple-400">
+                <Phone className="w-5 h-5" />
+                +91 7249557299
+              </a>
+              <a href="https://linkedin.com/in/sanika-kalaskar" className="flex items-center gap-2 text-purple-400">
+                <Linkedin className="w-5 h-5" />
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div className="w-1/3">
+            <img src="/mnt/data/Sanika recent.jpg" alt="Sanika Kalaskar" className="w-full rounded-lg shadow-lg" />
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="mb-32">
+        <h2 className="text-4xl font-bold mb-12">Education</h2>
+        <div className="space-y-8">
+          <div className="bg-purple-900 bg-opacity-20 p-6 rounded-lg">
+            <h3 className="text-xl font-bold">D.Y.Patil College of Engineering, Akurdi</h3>
+            <p className="text-purple-400">Bachelor's of Engineering in Artificial Intelligence and Data Science</p>
+            <p className="text-gray-400">Nov 2022 – July 2026 | Pune, Maharashtra</p>
+          </div>
+          <div className="bg-purple-900 bg-opacity-20 p-6 rounded-lg">
+            <h3 className="text-xl font-bold">Indian Institute of Technology Madras</h3>
+            <p className="text-purple-400">Bachelor's of Science in Data Science</p>
+            <p className="text-gray-400">Sep 2024 – July 2026 | Madras, Chennai</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="mb-32">
+        <h2 className="text-4xl font-bold mb-12">Experience</h2>
+        <div className="grid grid-cols-2 gap-8">
+          <ExperienceCard 
+            title="Code4GovTech"
+            role="Product Usability Design Track"
+            date="June 2024 – August 2024"
+            points={[
+              "Enhanced user accessibility for government platforms",
+              "Conducted extensive usability testing",
+              "Collaborated with cross-functional teams for optimal designs"
+            ]}
+          />
+          <ExperienceCard 
+            title="KBTL Foundation"
+            role="UI/UX Designer"
+            date="December 2023 – January 2024"
+            points={[
+              "Developed user-centered designs for educational platforms",
+              "Conducted user research to refine design strategies",
+              "Created wireframes and prototypes for seamless user interaction"
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="mb-32">
+        <h2 className="text-4xl font-bold mb-12">Projects</h2>
+        <div className="grid grid-cols-2 gap-8">
+          <ProjectCard 
+            title="Jyoti AI Redesigning"
+            date="October 2024 – November 2024"
+            description="AI-powered app to assist visually impaired individuals, enhancing accessibility through intuitive interfaces and voice-enabled technologies."
+            skills={["User Interface", "User Research", "Usability Testing", "Wireframes", "Prototype"]}
+            imagePlaceholder={true}
+          />
+          <ProjectCard 
+            title="CareCompanion"
+            date="August 2024 – September 2024"
+            description="User-friendly app for scheduling and managing medical appointments. Designed features for reminders and doctor availability."
+            skills={["User Interface", "User Research", "Usability Testing", "Wireframes", "Prototype"]}
+            imagePlaceholder={true}
+          />
+          <ProjectCard 
+            title="HWC Healthcare Redesigning"
+            date="July 2024"
+            description="Healthcare app for patient onboarding and medical services access. Improved registration efficiency by 50%."
+            skills={["User Interface", "User Research", "Usability Testing", "Wireframes", "Prototype"]}
+            imagePlaceholder={true}
+          />
+          <ProjectCard 
+            title="App for Wheelchair Basketball Players"
+            date="June 2024 – July 2024"
+            description="Designed an inclusive app for wheelchair basketball players to connect, schedule games, and share resources."
+            skills={["User Interface", "User Research", "Usability Testing", "Wireframes", "Prototype"]}
+            imagePlaceholder={true}
+          />
+          <ProjectCard 
+            title="Website for Jyoti AI Users"
+            date="May 2024 – June 2024"
+            description="Developed an accessible website for Jyoti AI, integrating assistive tools for visually impaired users."
+            skills={["User Interface", "User Research", "Usability Testing", "Wireframes", "Prototype"]}
+            imagePlaceholder={true}
+          />
+          <ProjectCard 
+            title="Kindness Connect"
+            date="April 2024 – May 2024"
+            description="Created a platform to encourage and track acts of kindness, fostering a positive community environment."
+            skills={["User Interface", "User Research", "Usability Testing", "Wireframes", "Prototype"]}
+            imagePlaceholder={true}
+          />
+        </div>
+      </section>
+
+      {/* Extra Curricular Section */}
+      <section id="extra" className="mb-32">
+        <h2 className="text-4xl font-bold mb-12">Extra Curricular</h2>
+        <div className="grid grid-cols-2 gap-8">
+          <ExperienceCard 
+            title="C4GT"
+            role="Campus Leader"
+            date="2024 - Present"
+            points={[
+              "Leading campus initiatives and organizing tech events",
+              "Managing community engagement and student participation",
+              "Coordinating with other campus leaders for collaborative events"
+            ]}
+          />
+          <ExperienceCard 
+            title="GDSC DYPCOE"
+            role="Design Lead"
+            date="2023 - Present"
+            points={[
+              "Leading UI/UX design initiatives for club projects",
+              "Organizing design workshops and training sessions",
+              "Collaborating with technical teams for integrated solutions"
+            ]}
+          />
+          <ExperienceCard 
+            title="ISA DYPCOE"
+            role="Technical Lead"
+            date="2023 - Present"
+            points={[
+              "Managing technical sessions for ISA activities",
+              "Guiding members in engineering problem-solving",
+              "Organizing workshops for core technical skills"
+            ]}
+          />
+          <ExperienceCard 
+            title="S4DS Society for Data Science, DYPCOE"
+            role="Technical Lead"
+            date="2023 - Present"
+            points={[
+              "Leading data science workshops and seminars",
+              "Promoting projects and events to enhance skill sets",
+              "Facilitating collaborations for innovative projects"
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="mb-32">
+        <h2 className="text-4xl font-bold mb-12">Contact</h2>
+        <p className="text-gray-400 text-lg mb-4">Feel free to reach out for collaborations or just a friendly chat!</p>
+        <div className="flex gap-6">
+          <a href="mailto:sanikakalaskar2004@gmail.com" className="flex items-center gap-2 text-purple-400">
+            <Mail className="w-5 h-5" />
+            Email
+          </a>
+          <a href="tel:+917249557299" className="flex items-center gap-2 text-purple-400">
+            <Phone className="w-5 h-5" />
+            +91 7249557299
+          </a>
+          <a href="https://linkedin.com/in/sanika-kalaskar" className="flex items-center gap-2 text-purple-400">
+            <Linkedin className="w-5 h-5" />
+            LinkedIn
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Portfolio;
